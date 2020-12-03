@@ -318,6 +318,8 @@ class SMTP:
         (code, msg) = self.getreply()
         if self.debuglevel > 0:
             print>>stderr, "connect:", msg
+        if code == 220:
+            self._host = host
         return (code, msg)
 
     def send(self, str):
